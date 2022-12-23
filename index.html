@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Kółko i krzyżyk</title>
+    <style>
+        body {
+            background-color: black;
+            margin-top: 70px;
+            text-align: center;
+        }
+        :root {
+            --field-size: 100px;
+            --field-font-size: 80px;
+            --field-color: #121212;
+        }
+        #container {
+            width: max-content;
+            height: max-content;
+            margin: auto;
+            cursor: crosshair;
+        }
+        #container *::selection {
+            background-color: #0000;
+        }
+        #end,#round {
+            text-align: center;
+            color: #a7a7a7;
+            font: bold 45px 'Calibri';
+            margin-top: 15px;
+        }
+        #end span {
+            color: white;
+            font: bold 70px 'Courier New';
+        }
+        #round span {
+            color: gray;
+            font: bold 50px 'CourierNew';
+        }
+        .field {
+            background-color: var(--field-color);
+            width: var(--field-size);
+            height: var(--field-size);
+            float: left;
+            border: solid gray 4px;
+
+            color: #bbbbbb;
+            font: bold var(--field-font-size) 'Verdana';
+            text-align: center;
+            line-height: var(--field-size);
+        }
+        .field:not(.checked):hover {
+            background-color: #212121;
+            cursor: crosshair;
+        }
+        .clearBoth {
+            clear: both;
+        }
+    </style>
+</head>
+<body onload="init();">
+    <div id="container"></div>
+    <div id="end"></div>
+    <div id="round">Kolejka<br> <span>KÓŁKO (O)</span></div>
+    <script src="system.js"></script>
+</body>
+</html>
