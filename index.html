@@ -3,65 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Kółko i krzyżyk</title>
-    <style>
-        body {
-            background-color: black;
-            margin-top: 70px;
-            text-align: center;
-        }
-        :root {
-            --field-size: 100px;
-            --field-font-size: 80px;
-            --field-color: #121212;
-        }
-        #container {
-            width: max-content;
-            height: max-content;
-            margin: auto;
-            cursor: crosshair;
-        }
-        #container *::selection {
-            background-color: #0000;
-        }
-        #end,#round {
-            text-align: center;
-            color: #a7a7a7;
-            font: bold 45px 'Calibri';
-            margin-top: 15px;
-        }
-        #end span {
-            color: white;
-            font: bold 70px 'Courier New';
-        }
-        #round span {
-            color: gray;
-            font: bold 50px 'CourierNew';
-        }
-        .field {
-            background-color: var(--field-color);
-            width: var(--field-size);
-            height: var(--field-size);
-            float: left;
-            border: solid gray 4px;
-
-            color: #bbbbbb;
-            font: bold var(--field-font-size) 'Verdana';
-            text-align: center;
-            line-height: var(--field-size);
-        }
-        .field:not(.checked):hover {
-            background-color: #212121;
-            cursor: crosshair;
-        }
-        .clearBoth {
-            clear: both;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css" type="text/css">
 </head>
-<body onload="init();">
-    <div id="container"></div>
-    <div id="end"></div>
-    <div id="round">Kolejka<br> <span>KÓŁKO (O)</span></div>
-    <script src="system.js"></script>
+<body onload="initMenu();">
+    <h1>Kółko i Krzyżyk</h1>
+    <h2>Menu</h2>
+
+    <div id="menu-container">
+        <button id="single-player">Tryb Singleplayer</button><br>
+        <button id="multi-player">Tryb Multiplayer</button><br>
+
+        <div id="single-player-div">
+            <p>Nazwa Gracza 1</p>
+            <input type="text" id="player-name-1" maxlength="20">
+            <p>Nazwa Gracza 2</p>
+            <input type="text" id="player-name-2" maxlength="20">
+            <br><button class="start-button">Zagraj</button>
+        </div>
+        <div id="multi-player-div">
+            <p>Twoja Nazwa</p>
+            <input type="text" id="player-name" maxlength="20">
+            <p>Kod Pokoju</p>
+            <input type="number" id="room-code">
+            <br><button class="start-button">Zagraj</button>
+        </div>
+    </div>
+    <div id="game-container">
+        <h3 id="round"></h3>
+
+        <div id="container"></div>
+        <div id="end"></div>
+        <div id="turn"></div>
+
+        <table id="scores-table">
+            <tr class="score-div">
+                <td class="sign"></td>
+                <td class="player"></td>
+                <td class="score"></td>
+            </tr>
+            <tr class="score-div">
+                <td class="sign"></td>
+                <td class="player"></td>
+                <td class="score"></td>
+            </tr>
+        </table>
+    </div>        
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
 </body>
 </html>
